@@ -39,6 +39,6 @@ set_target_properties(${TARGET_NAME}
 
 set_target_properties(${TARGET_NAME} 
         PROPERTIES 
-        COMPILE_FLAGS "-O2 -sSTRICT -sUSE_BOOST_HEADERS=1"
-        LINK_FLAGS "--bind --no-entry --closure 1 -O2 -sSTRICT -sASSERTIONS -sMODULARIZE=1 -sALLOW_MEMORY_GROWTH=1 -sDYNAMIC_EXECUTION=0 -s EXPORTED_FUNCTIONS=['_setThrew']"
+        COMPILE_FLAGS "-O2 -fexceptions -sSTRICT -sUSE_BOOST_HEADERS=1 -sNO_DISABLE_EXCEPTION_CATCHING"
+        LINK_FLAGS "--bind --no-entry --closure 1 -O2 -fexceptions -sSTRICT -sASSERTIONS -sMODULARIZE=1 -sALLOW_MEMORY_GROWTH=1 -sDYNAMIC_EXECUTION=0 -s EXPORTED_FUNCTIONS=['_setThrew']"
 )
