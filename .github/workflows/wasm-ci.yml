@@ -58,3 +58,12 @@ jobs:
       run: |
         npm install && npm run build-and-test
       working-directory: wasm
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: artifact
+        path: | 
+          wasm/dist/
+          wasm/README.md
+          wasm/package.json
