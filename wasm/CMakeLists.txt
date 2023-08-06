@@ -22,6 +22,7 @@ set_target_properties(${TARGET_NAME}
 
 # We use a set of COMPILE_FLAGS and LINK_FLAGS, see below links for more details.
 # - https://emscripten.org/docs/optimizing/Optimizing-Code.html#how-to-optimize-code
+# - https://emscripten.org/docs/porting/exceptions.html#emscripten-javascript-based-exception-support
 # - https://github.com/emscripten-core/emscripten/blob/main/src/settings.js
 # - https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html?highlight=lembind#embind
 
@@ -31,14 +32,17 @@ set_target_properties(${TARGET_NAME}
 # MODULARIZE=1: Emit generated JavaScript code wrapped in a function that returns a promise.
 # ALLOW_MEMORY_GROWTH=1: Allowing allocating more memory from the system as necessary.
 # DYNAMIC_EXECUTION=0: Do not emit eval() and new Function() in the generated JavaScript code.
+# DISABLE_EXCEPTION_CATCHING=0: Enable Emscripten’s JavaScript-based exceptions support.
+# EXPORT_EXCEPTION_HANDLING_HELPERS=1: Make the exception message printing function 'getExceptionMessage' available.
 
 # -O2: good old code optimization level for release.
+# -fexceptions: allow exception handling
 # --bind: Link Embind library.
 # --no-entry: Skip main entry point because it's built as a library.
 # --closure 1: Enable Emscripten closure compiler to minimize generated JavaScript code size.
 
 set_target_properties(${TARGET_NAME} 
         PROPERTIES 
-        COMPILE_FLAGS "-O2 -fexceptions -sSTRICT -sUSE_BOOST_HEADERS=1 -sNO_DISABLE_EXCEPTION_CATCHING -sEXPORT_EXCEPTION_HANDLING_HELPERS"
-        LINK_FLAGS "--bind --no-entry --closure 1 -O2 -fexceptions -sSTRICT -sASSERTIONS -sEXPORT_EXCEPTION_HANDLING_HELPERS -sMODULARIZE=1 -sALLOW_MEMORY_GROWTH=1 -sDYNAMIC_EXECUTION=0 -s EXPORTED_FUNCTIONS=['_setThrew']"
+        COMPILE_FLAGS "-O2 -fexceptions -sSTRICT -sUSE_BOOST_HEADERS=1 -sDISABLE_EXCEPTION_CATCHING=0 -sEXPORT_EXCEPTION_HANDLING_HELPERS=1"
+        LINK_FLAGS "--bind --no-entry --closure 1 -O2 -fexceptions -sSTRICT -sASSERTIONS -sMODULARIZE=1 -sALLOW_MEMORY_GROWTH=1 -sDYNAMIC_EXECUTION=0 -s EXPORTED_FUNCTIONS=['_setThrew']"
 )
