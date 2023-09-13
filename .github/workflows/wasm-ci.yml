@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ dev, master ]
 
+permissions:
+  contents: read
+  packages: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -16,6 +20,13 @@ jobs:
     if: github.event.pull_request.draft == false
     steps:
     - uses: actions/checkout@v3
+
+    - name: Node Setup
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@hakura'
 
     - name: Install system dependencies
       run: |
@@ -67,3 +78,11 @@ jobs:
           wasm/dist/
           wasm/README.md
           wasm/package.json
+
+    - name: Publish Package
+      run: npm publish
+      working-directory: wasm
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
