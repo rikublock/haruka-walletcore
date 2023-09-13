@@ -21,17 +21,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Node Setup
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18.x'
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@hakura'
-
     - name: Install system dependencies
       run: |
         tools/install-sys-dependencies-linux
         tools/install-rust-dependencies
+
     - name: Install emsdk
       run: tools/install-wasm-dependencies
 
@@ -64,6 +58,13 @@ jobs:
       env:
         CC: /usr/bin/clang
         CXX: /usr/bin/clang++
+
+    - name: Node Setup
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@haruka'
 
     - name: Test
       run: |
