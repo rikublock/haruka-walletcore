@@ -1,5 +1,5 @@
 {
-  "name": "@trustwallet/wallet-core",
+  "name": "@haruka/walletcore",
   "version": "1.0.0",
   "description": "wallet core wasm and protobuf models",
   "main": "dist/index.js",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/trustwallet/wallet-core.git"
+    "url": "https://github.com/rikublock/haruka-walletcore.git"
   },
   "author": "hewigovens",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trustwallet/wallet-core/issues"
+    "url": "https://github.com/rikublock/haruka-walletcore/issues"
   },
-  "homepage": "https://github.com/trustwallet/wallet-core#readme",
+  "homepage": "https://github.com/rikublock/haruka-walletcore#readme",
   "files": [
     "dist"
   ],
