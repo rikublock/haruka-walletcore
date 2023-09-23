@@ -1,5 +1,5 @@
 {
-  "name": "@haruka/walletcore",
+  "name": "@rikublock/walletcore",
   "version": "1.0.0",
   "description": "wallet core wasm and protobuf models",
   "main": "dist/index.js",

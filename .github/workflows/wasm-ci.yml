@@ -64,7 +64,7 @@ jobs:
       with:
         node-version: '18.x'
         registry-url: 'https://npm.pkg.github.com'
-        scope: '@haruka'
+        scope: '@rikublock'
 
     - name: Test
       run: |
