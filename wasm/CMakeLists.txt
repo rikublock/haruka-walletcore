@@ -44,5 +44,5 @@ set_target_properties(${TARGET_NAME}
 set_target_properties(${TARGET_NAME} 
         PROPERTIES 
         COMPILE_FLAGS "-O2 -fexceptions -sSTRICT -sUSE_BOOST_HEADERS=1 -sDISABLE_EXCEPTION_CATCHING=0"
-        LINK_FLAGS "--bind --no-entry --closure 1 -O2 -fexceptions -sSTRICT -sDISABLE_EXCEPTION_CATCHING=0 -sASSERTIONS -sMODULARIZE=1 -sALLOW_MEMORY_GROWTH=1 -sDYNAMIC_EXECUTION=0 -sEXPORT_EXCEPTION_HANDLING_HELPERS=1 -sEXPORTED_FUNCTIONS=['_setThrew']"
+        LINK_FLAGS "--bind --no-entry --closure 1 -O2 -fexceptions -sSTRICT -sDISABLE_EXCEPTION_CATCHING=0 -sASSERTIONS -sMODULARIZE=1 -sALLOW_MEMORY_GROWTH=1 -sDYNAMIC_EXECUTION=0 -sEXPORT_EXCEPTION_HANDLING_HELPERS=1 -sEXPORTED_FUNCTIONS=['_setThrew', 'incrementExceptionRefcount', 'decrementExceptionRefcount']"
 )
